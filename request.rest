@@ -1,0 +1,3 @@
+POST http://localhost:3001/user/signup
+POST http://localhost:3001/user/sigin
+GET  http://localhost:3001/user/satyam
