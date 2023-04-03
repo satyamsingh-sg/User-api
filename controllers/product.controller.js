@@ -1,5 +1,4 @@
 const Product = require('../models/product.model')
-const upload = require('../middlewares/multer.middleware')
 const createProduct = async(req,res)=>{
   try{
     const{name, description, price, category, quantity} = req.body;

@@ -3,22 +3,21 @@ const express = require('express');
 const cors = require("cors");
 const app = express();
 const bodyParser = require('body-parser') 
-var multer = require('multer');
-var forms = multer();
-app.use(bodyParser.json());
-app.use(forms.array()); 
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 const db = require('./config/mogoose.connection')
 db();
 const routers = require("./routes/route")
 
 app.use("/v1", routers);
 
-const upload = multer({ dest: 'uploads/' })
+
 app.get('/satyam',upload.single('img'),(req,res)=>{
     console.log(req.file)
-    console.log(req.body)
-    res.send("hi satyam how are you")
+    res.send(req.file)
 })
 
 app.listen(3001,()=>{
